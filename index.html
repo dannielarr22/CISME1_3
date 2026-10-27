@@ -1,20 +1,361 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Descubre Mo Dao Zu Shi: sinopsis, personajes, curiosidades y razones para leer esta novela de fantasía china.">
+  <title>Mo Dao Zu Shi | Una historia entre sombras y recuerdos</title>
+  <style>
+    :root {
+      --bg: #0d1018;
+      --panel: #171b27;
+      --panel-light: #202637;
+      --text: #f5f1eb;
+      --muted: #c1c0c8;
+      --red: #b94755;
+      --gold: #d9b978;
+      --line: rgba(217,185,120,.25);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 7%;
+      background: rgba(13,16,24,.92);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .brand {
+      font-size: .95rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: bold;
+    }
+    nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+    nav a { color: var(--muted); font-size: .9rem; transition: color .2s; }
+    nav a:hover { color: var(--gold); }
+    .hero {
+      min-height: 86vh;
+      display: grid;
+      place-items: center;
+      padding: 5rem 7%;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 75% 25%, rgba(185,71,85,.23), transparent 34%),
+        radial-gradient(ellipse at 20% 80%, rgba(72,92,133,.22), transparent 36%),
+        linear-gradient(135deg, #111521 0%, #171522 48%, #090c13 100%);
+    }
+    .hero::before, .hero::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(217,185,120,.18);
+      border-radius: 50%;
+      width: 32rem;
+      height: 32rem;
+      right: -8rem;
+      top: 10%;
+      transform: rotate(-28deg);
+      pointer-events: none;
+    }
+    .hero::after {
+      width: 22rem;
+      height: 38rem;
+      right: 0;
+      top: 5%;
+      border-color: rgba(185,71,85,.2);
+      transform: rotate(28deg);
+    }
+    .hero-content { max-width: 850px; position: relative; z-index: 1; }
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .28em;
+      font-size: .78rem;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      font-size: clamp(3.2rem, 8vw, 7.5rem);
+      line-height: .98;
+      margin: 1rem 0;
+      letter-spacing: -.045em;
+      font-weight: 500;
+    }
+    h1 span { color: var(--red); font-style: italic; }
+    .subtitle { font-size: clamp(1.05rem, 2vw, 1.35rem); color: var(--muted); max-width: 650px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 2rem; }
+    .button {
+      display: inline-block;
+      padding: .8rem 1.2rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: Arial, sans-serif;
+      font-size: .88rem;
+      letter-spacing: .04em;
+      transition: .2s ease;
+    }
+    .button.primary { background: var(--red); border-color: var(--red); color: white; }
+    .button:hover { transform: translateY(-2px); filter: brightness(1.12); }
+    .hero-note { margin-top: 3.2rem; color: #9295a3; font-size: .85rem; }
+    section { padding: 5.5rem 7%; }
+    .section-head { max-width: 760px; margin-bottom: 2.5rem; }
+    .section-kicker {
+      color: var(--red); font: bold .75rem Arial, sans-serif;
+      text-transform: uppercase; letter-spacing: .22em;
+    }
+    h2 { font-size: clamp(2.1rem, 4vw, 3.5rem); line-height: 1.1; margin: .55rem 0 1rem; font-weight: 500; }
+    .section-head p, .body-copy { color: var(--muted); }
+    .synopsis { background: #111520; }
+    .synopsis-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem; align-items: center; }
+    .quote-card {
+      padding: 2.2rem;
+      background: linear-gradient(145deg, var(--panel-light), #131722);
+      border-left: 3px solid var(--gold);
+      box-shadow: 0 18px 45px rgba(0,0,0,.18);
+    }
+    .quote-card .big-mark { color: var(--gold); font-size: 4rem; line-height: .8; }
+    .quote-card p { font-size: 1.25rem; font-style: italic; }
+    .quote-card small { color: var(--muted); font-family: Arial, sans-serif; }
+    .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2.5rem; }
+    .fact {
+      border-top: 1px solid var(--line);
+      padding: 1rem .2rem;
+    }
+    .fact strong { display: block; color: var(--gold); font-size: 1.05rem; margin-bottom: .25rem; }
+    .fact span { color: var(--muted); font: .86rem Arial, sans-serif; }
+    .characters { background: var(--bg); }
+    .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+    .character-card {
+      min-height: 260px;
+      padding: 1.5rem;
+      background: linear-gradient(160deg, #202638, #141823 72%);
+      border: 1px solid rgba(255,255,255,.06);
+      position: relative;
+      overflow: hidden;
+    }
+    .character-card::after {
+      content: attr(data-symbol);
+      position: absolute;
+      right: .6rem;
+      bottom: -2.2rem;
+      font-size: 9rem;
+      color: rgba(217,185,120,.07);
+      line-height: 1;
+    }
+    .character-card .number { color: var(--red); font: bold .8rem Arial, sans-serif; letter-spacing: .15em; }
+    .character-card h3 { font-size: 1.6rem; margin: .65rem 0 .4rem; font-weight: 500; }
+    .character-card p { color: var(--muted); font-size: .95rem; position: relative; z-index: 1; }
+    .reasons { background: #111520; }
+    .reason-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+    .reason {
+      display: flex;
+      gap: 1rem;
+      padding: 1.25rem;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.02);
+    }
+    .reason-icon { color: var(--gold); font-size: 1.4rem; min-width: 1.5rem; }
+    .reason h3 { margin: 0 0 .35rem; font-size: 1.15rem; font-weight: 500; }
+    .reason p { margin: 0; color: var(--muted); font-size: .93rem; }
+    .curiosities { background: var(--bg); }
+    .curiosity-list { max-width: 850px; margin: auto; }
+    details { border-bottom: 1px solid var(--line); padding: 1.1rem 0; }
+    summary { cursor: pointer; color: var(--text); font-size: 1.12rem; }
+    summary::marker { color: var(--red); }
+    details p { color: var(--muted); margin-bottom: .2rem; }
+    .closing {
+      text-align: center;
+      padding: 6rem 7%;
+      background:
+        radial-gradient(ellipse at center, rgba(185,71,85,.18), transparent 55%),
+        #111520;
+    }
+    .closing p { color: var(--muted); max-width: 650px; margin: 0 auto 1.7rem; }
+    footer {
+      padding: 1.5rem 7%;
+      color: #888b98;
+      font: .8rem Arial, sans-serif;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 800px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .synopsis-grid { grid-template-columns: 1fr; }
+      .facts { grid-template-columns: repeat(2, 1fr); }
+      .card-grid { grid-template-columns: 1fr; }
+      .character-card { min-height: auto; }
+      .reason-list { grid-template-columns: 1fr; }
+      .hero { min-height: 75vh; }
+    }
+    @media (max-width: 460px) {
+      nav { gap: .8rem; }
+      nav a { font-size: .82rem; }
+      section { padding: 4rem 6%; }
+      .hero { padding: 4rem 6%; }
+      .facts { gap: .5rem; }
+    }
+  </style>
 </head>
 <body>
-    <p style="color:purple">hola</p>
-    <p style="color: purple">hola</p>
-    <p style="color: purple">hola</p>
-    <p style="color: purple">hola</p>
-    <p style="color: purple">hola</p>
-    <p style="color: purple">hola</p>
-    <p style="color: purple">hola</p>
-    <p style="color: purple">hola</p>
-    <p style="color: purple">hola</p>
-    <p style="color: purple">hola</p>
+  <header class="topbar">
+    <a class="brand" href="#inicio">Mo Dao Zu Shi</a>
+    <nav aria-label="Navegación principal">
+      <a href="#sinopsis">Sinopsis</a>
+      <a href="#personajes">Personajes</a>
+      <a href="#razones">¿Por qué leerla?</a>
+      <a href="#curiosidades">Curiosidades</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+        <div class="eyebrow">Fantasía · Misterio · Cultivo espiritual</div>
+        <h1>Mo Dao <span>Zu Shi</span></h1>
+        <p class="subtitle">Una historia de secretos enterrados, lealtades puestas a prueba y dos caminos que vuelven a encontrarse cuando el pasado se niega a descansar.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#sinopsis">Adentrarme en la historia</a>
+          <a class="button" href="#curiosidades">Descubrir curiosidades</a>
+        </div>
+        <p class="hero-note">魔道祖师 · También conocida como <em>El gran maestro de la cultivación demoníaca</em></p>
+      </div>
+    </section>
+
+    <section class="synopsis" id="sinopsis">
+      <div class="synopsis-grid">
+        <div>
+          <div class="section-head">
+            <div class="section-kicker">La historia</div>
+            <h2>El pasado siempre encuentra la forma de regresar.</h2>
+          </div>
+          <p class="body-copy">Wei Wuxian fue un cultivador brillante y rebelde que terminó convirtiéndose en una de las figuras más temidas de su época. Tras su muerte, su nombre quedó asociado con el caos y la oscuridad. Años después, regresa al mundo de los vivos en un cuerpo ajeno y se reencuentra con Lan Wangji, un cultivador reservado que parece conocer mucho más de lo que dice.</p>
+          <p class="body-copy">Juntos comienzan a investigar una serie de sucesos inquietantes. Lo que parece un misterio aislado los lleva a descubrir secretos del pasado, viejas rivalidades y verdades que podrían cambiar la historia que todos creían conocer.</p>
+          <p class="body-copy">La novela combina investigación sobrenatural, intrigas entre clanes, humor, emoción y una relación que se desarrolla a través de la confianza, los recuerdos y el tiempo.</p>
+        </div>
+        <aside class="quote-card">
+          <div class="big-mark">“</div>
+          <p>Detrás de cada rumor hay una historia; detrás de cada historia, alguien que recuerda las cosas de otra manera.</p>
+          <small>Una invitación a leer entre líneas —sin spoilers</small>
+        </aside>
+      </div>
+      <div class="facts">
+        <div class="fact"><strong>Autora</strong><span>Mo Xiang Tong Xiu</span></div>
+        <div class="fact"><strong>Origen</strong><span>Novela web china</span></div>
+        <div class="fact"><strong>Géneros</strong><span>Fantasía, misterio y romance</span></div>
+        <div class="fact"><strong>Ambientación</strong><span>Clanes y cultivación espiritual</span></div>
+      </div>
+    </section>
+
+    <section class="characters" id="personajes">
+      <div class="section-head">
+        <div class="section-kicker">Personajes principales</div>
+        <h2>Dos formas muy distintas de ver el mundo.</h2>
+        <p>Sus personalidades, decisiones y silencios dan forma a una historia donde nadie es exactamente lo que aparenta.</p>
+      </div>
+      <div class="card-grid">
+        <article class="character-card" data-symbol="魏">
+          <span class="number">01 / EL REBELDE</span>
+          <h3>Wei Wuxian</h3>
+          <p>Ingenioso, carismático y poco dispuesto a seguir las reglas solo porque todos los demás lo hacen. Su curiosidad y sus decisiones lo convierten en el centro de una historia llena de preguntas.</p>
+        </article>
+        <article class="character-card" data-symbol="蓝">
+          <span class="number">02 / EL SERENO</span>
+          <h3>Lan Wangji</h3>
+          <p>Disciplinado, reservado y guiado por principios firmes. Aunque expresa poco con palabras, sus acciones revelan una lealtad que merece observarse con atención.</p>
+        </article>
+        <article class="character-card" data-symbol="云">
+          <span class="number">03 / LOS CLANES</span>
+          <h3>Un mundo de contrastes</h3>
+          <p>Alrededor de ellos hay aliados, rivales y familias con ideales diferentes. Cada clan tiene sus propias reglas, tradiciones y secretos que enriquecen el misterio.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="reasons" id="razones">
+      <div class="section-head">
+        <div class="section-kicker">Motivos para leerla</div>
+        <h2>Mucho más que una historia de fantasía.</h2>
+        <p>Si te gustan las tramas que recompensan tu atención, esta novela tiene varias razones para atraparte.</p>
+      </div>
+      <div class="reason-list">
+        <article class="reason">
+          <div class="reason-icon">✦</div>
+          <div><h3>Un misterio que se arma poco a poco</h3><p>Las pistas, los recuerdos y las versiones contradictorias te invitan a conectar detalles y cuestionar lo que parece evidente.</p></div>
+        </article>
+        <article class="reason">
+          <div class="reason-icon">☯</div>
+          <div><h3>Personajes con matices</h3><p>La novela explora la reputación, los prejuicios y las consecuencias de juzgar a alguien a partir de rumores.</p></div>
+        </article>
+        <article class="reason">
+          <div class="reason-icon">❖</div>
+          <div><h3>Un mundo inspirado en la fantasía china</h3><p>La cultivación espiritual, los clanes, los instrumentos tradicionales y las leyendas sobrenaturales construyen una ambientación distintiva.</p></div>
+        </article>
+        <article class="reason">
+          <div class="reason-icon">♡</div>
+          <div><h3>Una relación que evoluciona</h3><p>La confianza y el entendimiento entre los protagonistas se desarrollan a través de experiencias compartidas y del peso del pasado.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="curiosities" id="curiosidades">
+      <div class="section-head" style="margin-left:auto;margin-right:auto;text-align:center">
+        <div class="section-kicker">Pequeños detalles</div>
+        <h2>Curiosidades sin spoilers</h2>
+        <p>Algunos datos para conocer mejor la obra antes de comenzar a leer.</p>
+      </div>
+      <div class="curiosity-list">
+        <details>
+          <summary>¿Qué significa el título?</summary>
+          <p>El título chino es 魔道祖师 (Mó Dào Zǔ Shī). En español suele encontrarse como <em>El gran maestro de la cultivación demoníaca</em>, aunque el título puede variar según la edición o traducción.</p>
+        </details>
+        <details>
+          <summary>¿La historia empieza desde el principio?</summary>
+          <p>La narración combina el regreso de Wei Wuxian con revelaciones del pasado. Esta estructura permite descubrir gradualmente qué ocurrió y por qué los personajes llegaron a ser quienes son.</p>
+        </details>
+        <details>
+          <summary>¿Qué es la cultivación espiritual?</summary>
+          <p>Dentro de este mundo fantástico, es una práctica mediante la cual los cultivadores buscan desarrollar sus habilidades y alcanzar un nivel espiritual superior. La novela mezcla estas ideas con combates, rituales y sucesos sobrenaturales.</p>
+        </details>
+        <details>
+          <summary>¿Hay adaptaciones?</summary>
+          <p>Sí. La obra inspiró adaptaciones en distintos formatos, entre ellos una serie animada (donghua), una adaptación de acción real y una adaptación en formato de audio. Cada versión presenta la historia con su propio enfoque.</p>
+        </details>
+        <details>
+          <summary>¿Para quién puede ser esta novela?</summary>
+          <p>Puede interesarte si disfrutas los misterios con pistas conectadas, los mundos fantásticos con reglas propias, los personajes complejos y las historias donde el pasado influye en el presente.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="section-kicker">Tu próxima lectura</div>
+      <h2>¿Te atreves a descubrir la verdad?</h2>
+      <p>En Mo Dao Zu Shi, las apariencias engañan, los recuerdos pesan y cada respuesta abre nuevas preguntas. Si buscas una historia que combine emoción, misterio y fantasía, quizá sea momento de conocerla por ti mismo.</p>
+      <a class="button primary" href="#inicio">Volver al comienzo ↑</a>
+    </section>
+  </main>
+
+  <footer>
+    <span>Mo Dao Zu Shi · Guía introductoria para lectores</span>
+    <span>Página de fans no oficial. Sin spoilers importantes.</span>
+  </footer>
 </body>
 </html>
